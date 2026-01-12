@@ -4,11 +4,14 @@ server:
 spring:
   application:
     name: api-gateway
-
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
       routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
+        - id: user-service-route
+          uri: lb://user-service
           predicates:
             - Path=/users/**
