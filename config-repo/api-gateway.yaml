@@ -5,10 +5,19 @@ spring:
   cloud:
     gateway:
       routes:
+        # Auth Service Rotası
+        - id: auth-service-route
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+
+        # User Service Rotası
         - id: user-service-route
           uri: lb://user-service
           predicates:
             - Path=/users/**
+
+        # Order Service Rotası
         - id: order-service-route
           uri: lb://order-service
           predicates:
