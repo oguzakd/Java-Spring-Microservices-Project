@@ -14,19 +14,19 @@ The system is designed with **domain-driven separation** in mind. A unique archi
 
 ```mermaid
 graph TD
-    Client[Web / Mobile ] -->|HTTPS / 8080| Gateway[🚪 API Gateway]
+    Client["Web / Mobile"] -->|HTTPS / 8080| Gateway["🚪 API Gateway"]
     
     subgraph "Infrastructure Layer"
-        Eureka[📡 Eureka Server<br/>(Service Registry)]
-        Config[⚙️ Config Server<br/>(Git-Backed Configs)]
-        Kafka[📨 Apache Kafka<br/>(Event Backbone)]
-        Zookeeper[🦓 Zookeeper]
+        Eureka["📡 Eureka Server<br/>(Service Registry)"]
+        Config["⚙️ Config Server<br/>(Git-Backed Configs)"]
+        Kafka["📨 Apache Kafka<br/>(Event Backbone)"]
+        Zookeeper["🦓 Zookeeper"]
     end
 
     subgraph "Service Layer"
-        Gateway -->|lb://auth-service| Auth[🔐 Auth Service]
-        Gateway -->|lb://user-service| User[👤 User Service]
-        Gateway -->|lb://order-service| Order[📦 Order Service]
+        Gateway -->|lb://auth-service| Auth["🔐 Auth Service"]
+        Gateway -->|lb://user-service| User["👤 User Service"]
+        Gateway -->|lb://order-service| Order["📦 Order Service"]
         
         Auth -.->|Feign Client| User
         Order -.->|Feign + CircuitBreaker| User
@@ -35,7 +35,7 @@ graph TD
     Order -->|Produces: order-created| Kafka
     Kafka -->|Consumes: user-service-group| User
     
-    User -->|Persists| DB[(PostgreSQL)]
+    User -->|Persists| DB[("PostgreSQL")]
 ```
 
 ---
