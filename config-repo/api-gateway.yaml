@@ -2,7 +2,7 @@ server:
   port: 8080
 
 jwt:
-  secret: my-super-secret-key-123456789
+  secret: bu-benim-cok-guclu-ve-uzun-secret-key-degerim-32-karakter
 
 spring:
   cloud:
