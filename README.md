@@ -184,19 +184,19 @@ Sistem, **domain (iş alanı) tabanlı ayrıştırma** prensibiyle tasarlanmış
 
 ```mermaid
 graph TD
-    Client[Web / Mobil ] -->|HTTPS / 8080| Gateway[🚪 API Gateway]
+    Client["Web / Mobil"] -->|HTTPS / 8080| Gateway["🚪 API Gateway"]
     
     subgraph "Altyapı Katmanı"
-        Eureka[📡 Eureka Server<br/>(Servis Kaydı)]
-        Config[⚙️ Config Server<br/>(Git Tabanlı Konfigürasyon)]
-        Kafka[📨 Apache Kafka<br/>(Event Omurgası)]
-        Zookeeper[🦓 Zookeeper]
+        Eureka["📡 Eureka Server<br/>(Servis Kaydı)"]
+        Config["⚙️ Config Server<br/>(Git Tabanlı Konfigürasyon)"]
+        Kafka["📨 Apache Kafka<br/>(Event Omurgası)"]
+        Zookeeper["🦓 Zookeeper"]
     end
 
     subgraph "Servis Katmanı"
-        Gateway -->|lb://auth-service| Auth[🔐 Auth Service]
-        Gateway -->|lb://user-service| User[👤 User Service]
-        Gateway -->|lb://order-service| Order[📦 Order Service]
+        Gateway -->|lb://auth-service| Auth["🔐 Auth Service"]
+        Gateway -->|lb://user-service| User["👤 User Service"]
+        Gateway -->|lb://order-service| Order["📦 Order Service"]
         
         Auth -.->|Feign Client| User
         Order -.->|Feign + CircuitBreaker| User
@@ -205,7 +205,7 @@ graph TD
     Order -->|Üretir: order-created| Kafka
     Kafka -->|Tüketir: user-service-group| User
     
-    User -->|Kaydeder| DB[(PostgreSQL)]
+    User -->|Kaydeder| DB[("PostgreSQL")]
 ```
 
 ---
