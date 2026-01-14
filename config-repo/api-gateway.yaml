@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+jwt:
+  secret: my-super-secret-key-123456789
+
 spring:
   cloud:
     gateway:
