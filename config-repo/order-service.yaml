@@ -7,15 +7,11 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-  cloud:
-    openfeign:
-      circuitbreaker:
-        enabled: true # Fallback mekanizması için şart
 
 resilience4j:
   circuitbreaker:
     instances:
-      user-service: # FeignClient(name = "user-service") ile eşleşmesi için düzelttim
+      userService:
         slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState: 10s
